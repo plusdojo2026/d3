@@ -44,7 +44,7 @@
 <input class="mail" placeholder="メールアドレス"></input><br>
 <input type="password" placeholder="パスワード"></intput><br>
 <button type="submit">ログイン</button><br>
-<a href="">新規登録はこちら</a>
+<a href="${pageContext.request.contextPath}/RegistServlet">新規登録はこちら</a>
 
 </body>
 </html>
