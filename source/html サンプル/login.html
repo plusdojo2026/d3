@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+ <!--<link rel="stykesheet" href="header.css">-->
+
+ <style>
+  .header {
+    position:relative;
+    height: 80px;
+    border-bottom: 1px solid #ddd;
+}
+
+.login {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 30px;
+}
+ </style>
+
+<header class="header">
+
+  <a href="login.jsp" class="login">ログイン</a>
+
+  <div class="menu">
+    <a href="home.jsp">ホーム</a>
+    <a href="favorite.jsp">お気に入り</a>
+    <a href="mypage.jsp">マイページ</a>
+  </div>
+
+</header>
+</head>
+<body>
+<h1>ログイン</h1>
+<input class="mail"></input><br>
+<input type="password"></intput><br>
+<button type="submit">ログイン</button><br>
+<a href="">新規登録はこちら</a>
+
+</body>
+</html>
