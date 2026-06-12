@@ -18,7 +18,7 @@
 --
 -- Table structure for table `coffee`
 --
-CREATE DATABASE d3; 
+CREATE DATABASE d3;
 USE d3;
 					
 DROP TABLE IF EXISTS `coffee`;
