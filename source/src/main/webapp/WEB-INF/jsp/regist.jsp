@@ -29,12 +29,12 @@
 
 <header class="header">
 
-  <a href="login.jsp" class="login">ログイン</a>
+  <a href="LoginServlet" class="login">ログイン</a>
 
   <div class="menu">
-    <a href="home.jsp">ホーム</a>
-    <a href="favorite.jsp">お気に入り</a>
-    <a href="mypage.jsp">マイページ</a>
+    <a href="HomeServlet">ホーム</a>
+    <a href="FavoriteServlet">お気に入り</a>
+    <a href="MypageServlet">マイページ</a>
   </div>
 
 </header>
