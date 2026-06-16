@@ -98,7 +98,7 @@ CREATE TABLE `idpw` (
 
 LOCK TABLES `idpw` WRITE;
 /*!40000 ALTER TABLE `idpw` DISABLE KEYS */;
-INSERT INTO `idpw` VALUES (1,'plusdojo@gmail.com','id','password',1),(2,'plusdojo@gmail.com','id','password',1);
+INSERT INTO `idpw` VALUES (1,'plusdojo@gmail.com','id','password',1);
 /*!40000 ALTER TABLE `idpw` ENABLE KEYS */;
 UNLOCK TABLES;
 
