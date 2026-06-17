@@ -18,8 +18,9 @@
 --
 -- Table structure for table `coffee`
 --
-CREATE DATABASE webapp1;
-USE webapp1
+CREATE DATABASE d3;
+USE d3
+
 
 DROP TABLE IF EXISTS `coffee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -35,6 +36,7 @@ CREATE TABLE `coffee` (
   `shopname` varchar(50) DEFAULT NULL,
   `level` int DEFAULT NULL,
   `picture` varchar(200) DEFAULT NULL,
+  `memo` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`coffeenumber`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -84,11 +86,11 @@ DROP TABLE IF EXISTS `idpw`;
 CREATE TABLE `idpw` (
   `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(100) DEFAULT NULL,
-  `users` varchar(100) DEFAULT NULL,
+  `user` varchar(100) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
   `mylevel` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-16 16:28:10
+-- Dump completed on 2026-06-17 14:45:28
