@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/* 共通部分 */
+body {
+    margin: 0;
+}
+
+/* タイトル部分 */
+.title-area {
+    background-color: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 2rem;
+    font-family: serif;
+}
+
+/* h1付近 */
+.tag {
+	font-size: 20px;
+	border-bottom: 4px solid #e6e20a;
+	padding-bottom: 10px;
+}
+
+/*ログイン*/
+.login {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    padding: 5px;
+    background: #9c6849;
+    color: white;
+    border: none;
+    border-radius: 12px;
+}
+.login:hover {
+	background: #804040;
+}
+a {
+	color: #e6e20a;
+}
+a:hover {
+	color: #f1f543;
+}
+
+/*メイン部分*/
+.content {
+	display: flax;
+	gap: 15px;
+	padding: 0 18px;
+}

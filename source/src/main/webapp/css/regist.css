@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+/* 共通部分 */
+body {
+    margin: 0;
+    background-color: #e6e20a;
+}
+
+/* タイトル部分 */
+.title-area {
+    background-color: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 2rem;
+    font-family: serif;
+}
+
+/* h1付近 */
+.tag {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    top: 20px;
+    z-index: 10;
+}
+
+/*ログイン*/
+.login {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    padding: 5px;
+    background: #e6e20a;
+    color: white;
+    border: none;
+    border-radius: 12px;
+}
+.login:hover {
+	background: #cfc007;
+}
+a {
+	color: #e6e20a;
+}
+a:hover {
+	color: #f1f543;
+}
+
+/* フォーム */
+.form {
+  /*  display: flex; */
+    margin:  10px auto;
+    padding: 6px;
+    border: 4px solid #cfc007;
+    border-radius: 20px;
+    font-size: 14px;
+    background-color: #fff;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.middle {
+	text-align:center;
+}
+
+/* ボタン */
+.button {
+    display: block;
+    margin: 1px auto;
+    width: 40%;
+    padding: 5px;
+    background: #9c6849;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 4px solid #b68161;
+    position: relative;
+    z-index: 10;
+}
+.button:hover {
+	background-color: #804040;
+	
+}
+
+/* 画像 - アイスコーヒー*/
+.image-box {
+    height: 235px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.login-img {
+	margin-top: 20px;
+    width: 90%;
+}
+
+/*フェードインアニメーション*/
+.fade-up{
+	opacity: 0;
+	transform: translateY(100px);
+	animation: fadeUp 1s ease-out forwards;
+	position: relative;
+    z-index: 10;
+	
+}
+@keyframes fadeUp {
+	0% {
+		opacity: 0;
+		transform: translateY(80);
+	}
+	70% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+		}
+}

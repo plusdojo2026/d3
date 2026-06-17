@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+/* 共通部分 */
+body {
+    margin: 0;
+    background-color: #e6e20a;
+}
+
+/* タイトル部分 */
+.title-area {
+    background-color: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 2rem;
+    font-family: serif;
+}
+
+/* h1付近 */
+.tag {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    top: 20px;
+    z-index: 10;
+}
+
+/* フォーム */
+.form {
+    display: block;
+    margin: 4px auto;
+    padding: 6px;
+    border: 5px solid #e1e5e9;
+    border-radius: 20px;
+    font-size: 14px;
+    background-color: #fff;
+    position: relative;
+    z-index: 10;
+}
+
+/* ボタン */
+.button {
+    display: block;
+    margin: 10px auto;
+    width: 40%;
+    padding: 5px;
+    background: #e6e20a;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 4px solid #f1f543;
+    position: relative;
+    z-index: 10;
+}
+.button:hover {
+	background-color: #f1f543;
+	
+}
+
+/* 画像 - コーヒーカップ */
+.image-box {
+    height: 235px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.login-img {
+	margin-top: 80px;
+    width: 120%;
+}
+
+/* 画像 - 湯気 */
+.image-kemuri {
+    position: relative;
+    z-index: 2;
+}
+
+.login-img2 {
+    position: absolute;
+    top: -350px;
+    width: 110%;
+    opacity: 0.95;
+    z-index: 2;
+}
+
+/*新規登録リンク*/
+.registlink {
+	text-align: center;
+    position: relative;
+    z-index: 10;
+}
+a {
+	color: #e6e20a;
+}
+a:hover {
+	color: #f1f543;
+}
+
+/*フェードインアニメーション*/
+.fade-up{
+	opacity: 0;
+	transform: translateY(100px);
+	animation: fadeUp 2s ease-out forwards;
+	position: relative;
+    z-index: 10;
+	
+}
+@keyframes fadeUp {
+	0% {
+		opacity: 0;
+		transform: translateY(80);
+	}
+	70% {
+		opacity: 0.7;
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+		}
+}
