@@ -5,7 +5,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css">
-<title>新規登録｜Blew List</title>
+<title>お気に入り｜Blew List</title>
 
  <style>
   .header {
@@ -46,7 +46,7 @@
 	 
 		<a href="HomeServlet"><img src="images/ikon.png"  width="35"></a>
 	
-	     <a href="FavoriteServlet"><img src="images/fav.png"  width="50"></a>
+	     <a href="FavoriteServlet"><img src="images/favon.png"  width="50"></a>
 	    
 	    <a href="MypageServlet"><img src="images/mypage.png"  width="50" ></a>
 	
@@ -57,18 +57,23 @@
 <h1 class = "tag">お気に入り</h1>
 
 <!--お気に入り一覧表示エリア-->
-<div class="list-area">
-    <!--テーブル項目-->
-    <div class="card">
-        <img class="coffeeimg" src="${e.coffeeimg}" alt="画像">
-        <div class="coffeebrand" value="${e.coffeebrand}">ブランド名</div>
-        <div class="coffeename" value="${e.coffeename}">コーヒー名</div>
-        <div class="coffeesize" value="${e.coffeesize}">サイズ</div>
-        <div class="coffeeprice" value="${e.coffeeprice}">価格</div>
-        <a href="detail.jsp" class="detail">詳細</a>
-    </div>
+
+<table class="list">
+  <!--  <c:forEach var="coffee" items ="${coffee}">-->
+	<tr>
+		<th><img class="coffeeimg" src="${e.coffeeimg}" alt="画像"></th>
+        	<td>
+        		<div class="coffeeshop" value="${e.coffeeshop}">店名</div>
+        		<div class="coffeename" value="${e.coffeename}">コーヒー名</div>
+        		<div class="coffeesize" value="${e.coffeesize}">サイズ</div>
+        		<div class="coffeeprice" value="${e.coffeeprice}">価格</div>
+       			 <a href="DetailServlet" class="detail">詳細</a>
+        	</td>
+      </tr>
+      <!-- </c:forEach>-->
+ </table>
+  
    </div>
     
-</div>
 </body>
 </html>
