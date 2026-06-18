@@ -69,7 +69,10 @@ public class IdPwDAO {
 
 		// 結果を返す
 		return UserList;
+		//ここにインサート分
 	}
+	
+
 	
 	//ここから登録のプログラム
 		public boolean insert(IdPw UserList) {
