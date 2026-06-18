@@ -46,11 +46,11 @@ public class IdPw implements Serializable {
 		this.email = email;
 	}
 
-	public String getUser() {
+	public String getuser() {
 		return user;
 	}
 
-	public void setUser(String user) {
+	public void setuser(String user) {
 		this.user = user;
 	}
 
