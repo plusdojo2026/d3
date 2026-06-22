@@ -38,13 +38,13 @@ import dto.IdPw;
 	        // 初期表示はランダムなおすすめ（DAOから呼び出し）
 	        if (loginUser != null) {
 	            coffeeList =
-	                dao.findRecommendByUser(loginUser.getId());
+	                dao.findRecommendByUser(loginUser.getMylevel());
 	        } else {
 	            coffeeList = dao.findRandom();
 	        }
 	        //コーヒー一覧、ログイン情報
 	        request.setAttribute("coffeeList", coffeeList);
-	        request.setAttribute("loginUser", loginUser);
+	        request.setAttribute("id", loginUser);
 
 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/list.jsp");
 	dispatcher.forward(request, response);
@@ -60,7 +60,7 @@ import dto.IdPw;
 	        /*セッションに登録したユーザー情報を取り出し*/
 	        HttpSession session = request.getSession();
 	        IdPw loginUser =
-	            (IdPw) session.getAttribute("loginUser");
+	            (IdPw) session.getAttribute("id");
 
 	        /*daoを呼び出す*/
 	        CoffeeDAO dao = new CoffeeDAO();
@@ -91,7 +91,7 @@ import dto.IdPw;
 	        	
 	        //ユーザー毎のおすすめ
 	        if(loginUser != null) {
-	        	coffeeList = dao.findRecommendByUser(loginUser.getId());
+	        	coffeeList = dao.findRecommendByUser(loginUser.getMylevel());
 	        	
 	        }else {
 	        //ランダムに表示
@@ -99,12 +99,15 @@ import dto.IdPw;
 	        }
 	        //切り替え処理 履歴
 		}else if ("history".equals(mode)) {
-			if(loginUser != null) {
-				coffeeList = (List<Coffee>) session.getAttribute("historyList");
-			}
+			List<Integer>historyList = 
+					(List<Integer>) session.getAttribute("historyList");
+			
+			System.out.println(historyList);
+			coffeeList = dao.findByIds(historyList);
+			
 		}
 	        request.setAttribute("coffeeList", coffeeList);
-	        request.setAttribute("loginUser", loginUser);
+	        request.setAttribute("id", loginUser);
 	        request.setAttribute("errorMessage", errorMessage);
 
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/list.jsp");

@@ -134,6 +134,49 @@ public class IdPwDAO {
 			return result;
 		}
 		//ここまで登録プログラム
+		
+		// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
+		public boolean update(int id,int mylevel) {
+		    Connection conn = null;
+		    boolean result = false;
+
+		    try {
+		        Class.forName("com.mysql.cj.jdbc.Driver");
+
+		        conn = DriverManager.getConnection(
+		            "jdbc:mysql://localhost:3306/d3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
+		            "root",
+		            "password"
+		        );
+
+		        // SQL 文の修正：WHERE の前の余分な , を削除
+		        String sql = "UPDATE idpw SET mylevel=? WHERE id=?";
+
+		        PreparedStatement pStmt = conn.prepareStatement(sql);
+
+		        // パラメータ設定の修正
+		        pStmt.setInt(1, mylevel);      // 1番目：mylevel（INT型）
+		        pStmt.setInt(2, id);           // 2番目：id（INT型）
+
+		        if (pStmt.executeUpdate() == 1) {
+		            result = true;
+		        }
+
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    } finally {
+		        if (conn != null) {
+		            try {
+		                conn.close();
+		            } catch (Exception e) {
+		                e.printStackTrace();
+		            }
+		        }
+		    }
+
+		    return result;
+		}
+
 
 }
 	

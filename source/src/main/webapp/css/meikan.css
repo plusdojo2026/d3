@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/* すべてのページに適用される設定*/
+/*.body{
+background-image:url(/webapp/img/carl-raw-n3GDA7mZVyU-unsplash.jpg);
+}*/
+.html{
+    font-size:8px;
+    font-family:sans-serif;
+}
+.page_change {
+    background-size: cover;     
+    background-repeat: no-repeat;
+    background-position: center;
+}
+img.slogan{
+    margin:auto;
+    display:block;
+}
+.center_view{
+    margin:10px auto 20px ;
+    width:800px;
+}
+.under_view{
+    margin:10px auto 20px;
+    width:800px;
+}
+.main{                
+  margin-bottom: 40px;
+}
+/* すべてのページに適用 - ヘッダー*/
+
+/* すべてのページに適用 - ヒーロー*/
+#main-visual img {
+    width: 100%; /* 親要素の幅に合わせる */
+    height: auto; /* アスペクト比を維持 */
+}
+/* すべてのページに適用 - メイン*/
+
+/* すべてのページに適用 - フッター*/
+/* 個別のスタイル*/
+/* home.html*/
+.summary{
+    color: #551A8B;
+    list-style-type:none;
+    text-decoration: underline;
+    color:#551A8B;
+}
+.accordion-1 {
+    padding-bottom: 100px;
+}

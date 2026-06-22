@@ -51,16 +51,15 @@
 
 <div class="fade-up">
 <h1 class= tag>ログイン</h1>
+<form method="POST" action="/d3/LoginServlet">
 
-
-<input type="email" class="form" placeholder="メールアドレス"></input><br>
-<input type="password" class="form" placeholder="パスワード"><br>
-
-
+<input type="email" name="email" class="form" placeholder="メールアドレス"></input><br>
+<input type="password" name="password" class="form" placeholder="パスワード"><br>
 <button type="submit" class="button">ログイン</button><br>
 
+</form>
 <div class="registlink">
-<a href="${pageContext.request.contextPath}/RegistServlet">
+<a href="/d3/RegistServlet">
 新規登録はこちら
 </a>
 </div>

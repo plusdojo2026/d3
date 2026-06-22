@@ -29,12 +29,12 @@
 
 <header class="header">
 
-  <a href="login.jsp" class="login">ログイン</a>
+  <a href="/d3/logout.jsp" class="login">ログアウト</a>
 
   <div class="menu">
-    <a href="HomeServlet">ホーム</a>
-    <a href="favorite.jsp">お気に入り</a>
-    <a href="mypage.jsp">マイページ</a>
+    <a href="/d3/HomeServlet">ホーム</a>
+    <a href="/d3/FavoriteServlet">お気に入り</a>
+    <a href="/d3/MypageServlet">マイページ</a>
   </div>
 
 </header>
@@ -92,6 +92,8 @@
 
 </div>
 
+<p>id: ${id.id}</p>
+
 <c:if test="${not empty errorMessage}">
     <script>
         alert("${errorMessage}");
@@ -135,7 +137,7 @@
                 </div>
 
                 <!-- 詳細 -->
-                <a href="detail?id=${coffee.number}" class="detail">
+                <a href="DetailServlet?coffeeId=${coffee.number}" class="detail">
                     詳細
                 </a>
 

@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>新規登録｜Brew List</title>
 
-<title>新規登録｜Blew List</title>
  <link rel="stylesheet" 
  		href="${pageContext.request.contextPath}/css/regist.css">
 
@@ -26,7 +25,7 @@
 	.header img:hover {
 		filter: brightness(1.3);
 		transform: scale(1.1);
-		}
+	}
 
 .menu {
     display: flex;
@@ -35,16 +34,22 @@
     padding-top: 30px;
 }
 
-  .error-message {
-    color: #dc3545;
+/* エラースタイル */
+.error-message {
+    color: #d32f2f;
     font-size: 12px;
     margin-top: 5px;
-    display: none;
-  }
+    margin-bottom: 10px;
+}
 
-  .error-message.show {
-    display: block;
-  }
+.form.error {
+    border: 2px solid #d32f2f !important;
+    background-color: #ffebee !important;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
  </style>
 
 </head>
@@ -67,37 +72,36 @@
 	
 	</header>
 	
-<h1 class = "tag">新規登録</h1>
+<h1 class="tag">新規登録</h1>
 
-<div class="middle">
-	<form method="POST" action="/d3/RegistServlet" id ="registForm">
-	
-	<div class ="form-group">
-		<label for ="user">ユーザー名<span style="color: #dc3545;">*</span></label><br>
-	    <input type="text" id="user" name="username" placeholder="ユーザー名を入力してください" class="form">
-	    <div class ="error-message" id="userError">ユーザーネームを入力してください</div>
-    </div>
-    
-	<div class ="form-group">
-		<label for ="email">メールアドレス<span style="color: #dc3545;">*</span></label><br>
-    	<input type="email" id="email" name="email" placeholder="メールアドレスを入力してください"class="form">
-	    <div class ="error-message" id="emailError">有効なメールアドレスを入力してください</div>
-    </div>
-    
-	<div class ="form-group">
-	<label for ="password">パスワード<span style="color: #dc3545;">*</span></label><br>
-    <input type="password" id="password" name="password" placeholder="パスワードを入力してください"class="form">
-	<div class ="error-message" id="passwordError">パスワードを入力してください（6文字以上）</div>
-    </div>
-    
-<input type="submit" value="登録" class="button">
+<form method="POST" action="/d3/RegistServlet" id="registForm">
+    <div class="middle">
+        
+        <!-- ユーザー名 -->
+        <div class="form-group">
+            <input type="text" id="user" name="user" placeholder="ユーザー名" class="form">
+            <div id="userError" class="error-message"></div>
+        </div>
+        
+        <!-- メールアドレス -->
+        <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="メールアドレス" class="form">
+            <div id="emailError" class="error-message"></div>
+        </div>
+        
+        <!-- パスワード -->
+        <div class="form-group">
+            <input type="password" id="password" name="password" placeholder="パスワード" class="form">
+            <div id="passwordError" class="error-message"></div>
+        </div>
 
-	</form> 
-</div>
+        <input type="submit" value="登録" class="submit-btn">
+    </div>
+</form>
 
-<div class ="fade-up">
-	<div class ="image-box">
-		<img src="images/ice.png"class="login-img" alt="">
+<div class="fade-up">
+	<div class="image-box">
+		<img src="images/ice.png" class="login-img" alt="">
 	</div>
 </div>
 
@@ -122,43 +126,40 @@
     // ユーザーネームのバリデーション
     if (userInput.value.trim() === '') {
       userInput.classList.add('error');
-      userError.classList.add('show');
+      userError.textContent = 'ユーザー名を入力してください';
       isValid = false;
     } else {
       userInput.classList.remove('error');
-      userError.classList.remove('show');
+      userError.textContent = '';
     }
 
     // メールアドレスのバリデーション
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
     if (emailInput.value.trim() === '') {
       emailInput.classList.add('error');
       emailError.textContent = 'メールアドレスを入力してください';
-      emailError.classList.add('show');
       isValid = false;
     } else if (!emailRegex.test(emailInput.value.trim())) {
       emailInput.classList.add('error');
       emailError.textContent = '有効なメールアドレスを入力してください';
-      emailError.classList.add('show');
       isValid = false;
     } else {
       emailInput.classList.remove('error');
-      emailError.classList.remove('show');
+      emailError.textContent = '';
     }
 
     // パスワードのバリデーション
     if (passwordInput.value === '') {
       passwordInput.classList.add('error');
-      passwordError.classList.add('show');
+      passwordError.textContent = 'パスワードを入力してください';
       isValid = false;
     } else if (passwordInput.value.length < 6) {
       passwordInput.classList.add('error');
       passwordError.textContent = 'パスワードは6文字以上で入力してください';
-      passwordError.classList.add('show');
       isValid = false;
     } else {
       passwordInput.classList.remove('error');
-      passwordError.classList.remove('show');
+      passwordError.textContent = '';
     }
 
     return isValid;
@@ -169,30 +170,31 @@
     e.preventDefault();
 
     if (validateForm()) {
+      // バリデーション成功時のみ送信
       form.submit();
     }
   });
 
-  // リアルタイムバリデーション
+  // リアルタイムバリデーション（フィールドを離れたとき）
   userInput.addEventListener('blur', function() {
     if (this.value.trim() !== '') {
       this.classList.remove('error');
-      userError.classList.remove('show');
+      userError.textContent = '';
     }
   });
 
   emailInput.addEventListener('blur', function() {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
     if (this.value.trim() !== '' && emailRegex.test(this.value.trim())) {
       this.classList.remove('error');
-      emailError.classList.remove('show');
+      emailError.textContent = '';
     }
   });
 
   passwordInput.addEventListener('blur', function() {
     if (this.value.length >= 6) {
       this.classList.remove('error');
-      passwordError.classList.remove('show');
+      passwordError.textContent = '';
     }
   });
 </script>
