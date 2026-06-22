@@ -1,385 +1,164 @@
 @charset "UTF-8";
 
-/* ===== リセット ===== */
-* {
-    box-sizing: border-box;
+/*リセット*/
+*{
+	box-sizing: border-box;
 }
-
+/* 共通部分 */
 body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: -apple- system, BlinkMacSystemFont,'Segoe UI', Roboto, sans-serif;
     background-color: #f5f5f5;
 }
 
-/* ===== タイトル部分 ===== */
+/* タイトル部分 */
 .title-area {
     background-color: white;
     height: 50px;
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 15px;
     font-size: 2rem;
     font-family: serif;
-    font-weight: bold;
-    border-bottom: 1px solid #eee;
 }
 
-/* ===== ログインボタン ===== */
-.login {
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    padding: 8px 16px;
-    background-color: #e6e20a;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 100;
-    transition: all 0.3s ease;
-}
-
-.login:hover {
-    background-color: #d4d000;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* ===== ヘッダー（ナビゲーション） ===== */
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    height: 70px;
-    background-color: #e6e20a;
-    border-bottom: 3px solid #ffffff;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    width: 100%;
-    flex-wrap: nowrap;
-}
-
-.header a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    flex-shrink: 0;
-}
-
-.header img {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
-    transition: all 0.3s ease;
-}
-
-.header img:hover {
-    filter: brightness(1.3);
-    transform: scale(1.1);
-}
-
-/* ===== リンク共通 ===== */
-a {
-    color: #e6e20a;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #d4d000;
-}
-
-/* ===== メインコンテンツ ===== */
-.content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px 18px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* ===== h1（マイページ） ===== */
+/* h1付近 */
 .tag {
-    font-size: 24px;
-    font-weight: bold;
-    border-bottom: 4px solid #e6e20a;
-    padding-bottom: 12px;
-    margin: 0;
-    color: #333;
+	font-size: 24px;
+	font-weight: bold;
+	border-bottom: 4px solid #e6e20a;
+	padding-bottom: 10px;
+	margin: 0;
 }
 
-/* ===== main ===== */
-main {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+
+/*リンク部分*/
+a {
+	color: #e6e20a;
+}
+a:hover {
+	color: #f1f543;
 }
 
-/* ===== ユーザー名 ===== */
+/*メイン部分*/
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 20px 18px;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+/*ユーザー名*/
 .username {
-    font-size: 18px;
+	font-size: 18px;
     font-weight: bold;
     color: #333;
     margin: 0;
-    padding: 10px 0;
+    padding: 10px 0;	
 }
 
-/* ===== フォームグループ ===== */
+/*フォーム部分*/
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
 }
-
 .form-label {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-    display: block;
+	font-size: 16px;
+	font-weight: 600;
+	color: #333;
+	display: block;
 }
-
-/* ===== セレクトボックス ===== */
+/*セレクトボックス*/
 .select-wrapper {
-    position: relative;
-    display: inline-block;
-    width: 100%;
+	position: relative;
+	display: inline-block;
+	width: 100%;
 }
-
 .selectbox {
-    width: 100%;
-    padding: 12px 40px 12px 15px;
-    font-size: 16px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    background-color: white;
-    color: #333;
-    cursor: pointer;
-    appearance: none;
+	width: 100%;
+	padding: 12px 40px 12px 15px;
+	border-radius: 6px;
+	background-color: white;
+	color: #333;
+	cursor: pointer;
+	appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     transition: all 0.3s ease;
 }
-
 .selectbox:hover {
-    border-color: #e6e20a;
-    box-shadow: 0 2px 6px rgba(230, 226, 10, 0.2);
+	border-color: #e6e20a;
+	box-shadow: 0 2px 6px rgba(230,226,10,0.2);
 }
-
 .selectbox:focus {
-    outline: none;
-    border-color: #e6e20a;
-    box-shadow: 0 0 8px rgba(230, 226, 10, 0.3);
+	outline: none;
+	border-color: #e6e20a;
+	box-shadow: 0 0 8px rgba(230, 226, 10, 0.3);
 }
 
-/* セレクトボックスの矢印カスタマイズ */
+/*矢印カスタマイズ*/
 .select-wrapper::after {
-    content: '';
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 10px;
-    height: 7px;
-    background-color: #e6e20a;
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-    pointer-events: none;
+	content: '';
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 10px;
+	height: 7px;
+	background-color: #e6e20a;
+	clip-path: polygon(0 0. 100% 0, 50% 100%);
+	pointer-events: none;
 }
 
-/* ===== 確定ボタン ===== */
+/*確定ボタン*/
 .button {
+    width: 40%;
     padding: 12px 30px;
     font-size: 16px;
     font-weight: bold;
-    background-color: #e6e20a;
+    background: #e6e20a;
     color: white;
-    border: 2px solid #d4d000;
+    border: 3px solid #d4d000;;
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 100%;
-    max-width: 200px;
 }
 
-.button:hover {
-    background-color: #d4d000;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(230, 226, 10, 0.3);
-}
-
-.button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 6px rgba(230, 226, 10, 0.2);
-}
-
-/* ===== 画像コンテナ ===== */
+/*画像調整*/
 .image-container {
-    display: flex;
-    flex-direction: row;
-    gap: 0;
-    padding: 40px 10px;
-    max-width: 600px;
-    margin: 0 auto;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	gap: 0;
+	padding: 40px 10px;
+	max-width: 600px;
+	margin: 0 auto;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	height: 235px;
+    overflow: hidden;
 }
-
 .image-box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: visible;
-    min-width: 0;
-}
+	flex: 1;
+	display: flex;
+	width: 70%;
+    position: relative;
+    z-index: 1;
+    margin-top: 130px;
 
-.coffee-img {
+}
+.image-box2 {
+	flex: 1;
+	display: flex;
+	width: 70%;
+    position: relative;
+    z-index: 2;
+}
+.login-img {
+	margin-top: 20px;
     width: 100%;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.coffee-img:hover {
-    transform: scale(1.05);
-}
-
-/* ===== レスポンシブ対応 ===== */
-@media (max-width: 768px) {
-    .title-area {
-        font-size: 1.5rem;
-        padding-left: 15px;
-    }
-
-    .header {
-        height: 65px;
-        gap: 35px;
-    }
-
-    .header img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .content {
-        padding: 15px 12px;
-        gap: 15px;
-    }
-
-    .tag {
-        font-size: 20px;
-        padding-bottom: 10px;
-    }
-
-    .username {
-        font-size: 16px;
-    }
-
-    .form-label {
-        font-size: 14px;
-    }
-
-    .selectbox {
-        padding: 10px 35px 10px 12px;
-        font-size: 14px;
-    }
-
-    .button {
-        padding: 10px 25px;
-        font-size: 14px;
-        width: 100%;
-    }
-
-    .image-container {
-        padding: 30px 8px;
-        gap: 0;
-        flex-direction: row;
-    }
-
-    .image-box {
-        flex: 1;
-    }
-
-    .coffee-img {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .title-area {
-        font-size: 1.2rem;
-        height: 45px;
-        padding-left: 12px;
-    }
-
-    .login {
-        padding: 6px 12px;
-        font-size: 12px;
-        top: 8px;
-        right: 10px;
-    }
-
-    .header {
-        height: 60px;
-        gap: 25px;
-    }
-
-    .header a {
-        flex-shrink: 0;
-    }
-
-    .header img {
-        width: 35px;
-        height: 35px;
-    }
-
-    .content {
-        padding: 12px 10px;
-        gap: 12px;
-    }
-
-    .tag {
-        font-size: 18px;
-        padding-bottom: 8px;
-    }
-
-    .username {
-        font-size: 14px;
-    }
-
-    .form-label {
-        font-size: 13px;
-    }
-
-    .selectbox {
-        padding: 8px 30px 8px 10px;
-        font-size: 13px;
-    }
-
-    .button {
-        padding: 8px 20px;
-        font-size: 13px;
-    }
-
-    .image-container {
-        padding: 25px 5px;
-        gap: 0;
-        flex-direction: row;
-        justify-content: center;
-    }
-
-    .image-box {
-        flex: 1;
-        overflow: visible;
-    }
-
-    .coffee-img {
-        max-width: 100%;
-    }
 }

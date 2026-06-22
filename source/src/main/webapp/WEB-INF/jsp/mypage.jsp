@@ -52,6 +52,27 @@
   .success-message.show {
     display: block;
   }
+  
+  /*ログイン*/
+.login {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    padding: 8px 16px;
+    background: #9c6849;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s;
+}
+.login:hover {
+	background: #804040;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+  
 </style>
 </head>
 
@@ -59,9 +80,15 @@
 
 <div class="title-area">Brew List</div>
 
-<a href="/d3/logout.jsp">
-  <button type="submit" class="login">ログアウト</button>
-</a>
+  <!-- <a href="/d3/logout.jsp" class="login">ログアウト</a> 
+  <a href="/d3/LoginServlet" class="login">ログイン</a>-->
+  <c:if test="${empty sessionScope.id}">
+  	<a href="/d3/LoginServlet" class="login">ログイン</a>
+  </c:if>
+  
+  <c:if test="${not empty sessionScope.id}">
+  	<a href="/d3/logout.jsp" class="login">ログアウト</a>
+  </c:if>
 
 <header class="header">
   <a href="HomeServlet"><img src="images/ikon.png" width="35"></a>
@@ -80,35 +107,38 @@
       </div>
     </c:if>
 
-    <h2>${user.user} さん</h2>
+    <h2 class ="username">${user.user} さん</h2>
 
     <form action="${pageContext.request.contextPath}/MypageServlet" method="POST">
+    	<div class="form-group">
 
-      <div class="h3">
-        あなたのコーヒーの好みは？<br>
-      </div>
+		<label for="kind" class="form-label">
+		あなたの好きなコーヒーは？
+		</label>
 
       <!-- JSTL で selected を付加 -->
-      <label for="level" class="selectbox">
-        <select id="level" name="kind">
+     <div class ="select-wrapper">
+        <select id="level" name="kind" class="selectbox">
           <option value="1" <c:if test="${user.mylevel == 1}">selected</c:if>>あっさり</option>
           <option value="2" <c:if test="${user.mylevel == 2}">selected</c:if>>普通</option>
           <option value="3" <c:if test="${user.mylevel == 3}">selected</c:if>>濃いめ</option>
         </select>
-      </label>
+       </div>
 
       <input type="submit" value="確定" class="button">
-
+		</div>
     </form>
   </main>
 </div>
 
-<div class="image-box">
-  <img src="images/ice.png" class="login-img" alt="">
-</div>
-
+<div class ="image-container">
 <div class="image-box">
   <img src="images/hot.png" class="login-img" alt="">
+</div>
+
+<div class="image-box2">
+  <img src="images/ice.png" class="login-img" alt="">
+</div>
 </div>
 
 </body>

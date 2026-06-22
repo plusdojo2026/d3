@@ -4,54 +4,88 @@
 <!DOCTYPE html>
 <html>
 <head>
- <!--<link rel="stykesheet" href="header.css">-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/list.css">
+<title>コーヒー一覧｜Brew List</title>
 
- <style>
+<style>
   .header {
-    position:relative;
-    height: 80px;
-    border-bottom: 1px solid #ddd;
-}
-
-.login {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-}
-
-.menu {
     display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding-top: 30px;
-}
- </style>
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80px;
+    background-color: #e6e20a;
+    border-bottom: 3.5px solid #ffffff;
+    position: relative;
+    z-index: 10;
+  }
+
+  .header img:hover {
+    filter: brightness(1.3);
+    transform: scale(1.1);
+  }
+
+  select {
+  	width: 20%;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 2px solid #e6e20a;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+  /* ✅ 成功メッセージのスタイル */
+  .success-message {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+  }
+
+  .success-message.show {
+    display: block;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="title-area">Brew List</div>
+
+  <!-- <a href="/d3/logout.jsp" class="login">ログアウト</a> 
+  <a href="/d3/LoginServlet" class="login">ログイン</a>-->
+  <c:if test="${empty sessionScope.id}">
+  	<a href="/d3/LoginServlet" class="login">ログイン</a>
+  </c:if>
+  
+  <c:if test="${not empty sessionScope.id}">
+  	<a href="/d3/logout.jsp" class="login">ログアウト</a>
+  </c:if>
+  
+  
 
 <header class="header">
-
-  <a href="/d3/logout.jsp" class="login">ログアウト</a>
-
-  <div class="menu">
-    <a href="/d3/HomeServlet">ホーム</a>
-    <a href="/d3/FavoriteServlet">お気に入り</a>
-    <a href="/d3/MypageServlet">マイページ</a>
-  </div>
-
+  <a href="HomeServlet"><img src="images/ikon.png" width="35"></a>
+  <a href="FavoriteServlet"><img src="images/fav.png" width="50"></a>
+  <a href="MypageServlet"><img src="images/mypage.png" width="50"></a>
 </header>
-<meta charset="UTF-8">
-<title>メイン｜Blew List</title>
-</head>
-<body>
-<div>
+
+<div class="content">
+  <h1 class="tag">コーヒー一覧</h1>
 
 <form action="SearchServlet" method="post">
 
-    <input type="text" name="search"
+		<input type="text" name="search"
            placeholder="コーヒーを検索"
-           value="" />
-
-    <button type="submit" id="searchbutton">検索</button><br>
-
+           value=""  class="searchform">
     <select name="sortsize">
         <option value="">サイズ</option>
         <option value="100-200">100~200ml</option>
@@ -80,19 +114,17 @@
     	<option value="700-9999">700円以上</option>
     </select>
 
+    <button type="submit" id="searchbutton" class="button">検索</button><br>
+    
 </form>
 </div>
 
-<div>
-
-    <form action="HomeServlet" method="post">
-        <button name="mode" value="recommend" id="recommend">おすすめ</button>
-        <button name="mode" value="history">履歴</button>
-    </form>
-
-</div>
-
-<p>id: ${id.id}</p>
+	<div>
+		<form action="HomeServlet" method="post">
+        <button name="mode" value="recommend" id="recommend" class="bar">おすすめ</button>
+        <button name="mode" value="history" id="history"class="bar">履歴</button>
+    	</form>
+	</div>
 
 <c:if test="${not empty errorMessage}">
     <script>
@@ -100,55 +132,49 @@
     </script>
 </c:if>
 
-<div class="list">
 <c:if test="${empty errorMessage}">
-	<c:choose>
 
-    <c:when test="${empty coffeeList}">
-        <p>該当するコーヒーが見つかりませんでした。</p>
-    </c:when>
+<c:choose>
+  <c:when test="${empty coffeeList}">
+      <p>該当するコーヒーが見つかりませんでした。</p>
+  </c:when>
 
-    <c:otherwise>
+   <c:otherwise>
+   <table class="list">
+     <tbody>
+      <c:forEach var="coffee" items="${coffeeList}">
+      	<tr>
+      		<td>
+			    <img src="${pageContext.request.contextPath}/cafe_img/${coffee.picture}" 
+			    	 class="coffeeimg"
+			    	 alt="${coffee.name}">
+			</td>
+			
+			<td>
+			  <div class ="coffee-info">
+				
+				<div class="shopname">${coffee.shopname}</div>
+				<div class="name">${coffee.name}</div>
+				<div class="size"> ${coffee.size}ml</div>
+				<div class="valu">¥${coffee.valu}</div>
 
-        <c:forEach var="coffee" items="${coffeeList}">
-            <div class="card">
-
-                <!-- 画像 -->
-                <img src="${coffee.picture}" class="coffeeimg">
-
-                <!-- ブランド -->
-                <div class="coffeebrand">
-                    ${coffee.bland}
-                </div>
-
-                <!-- 名前 -->
-                <div class="coffeename">
-                    ${coffee.name}
-                </div>
-
-                <!-- サイズ -->
-                <div class="coffeesize">
-                    サイズ：${coffee.size}
-                </div>
-
-                <!-- 価格 -->
-                <div class="coffeeprice">
-                    ¥${coffee.valu}
-                </div>
-
-                <!-- 詳細 -->
-                <a href="DetailServlet?coffeeId=${coffee.number}" class="detail">
-                    詳細
-                </a>
-
-            </div>
+					<form action="${pageContext.request.contextPath}/DetailServlet" 
+						  method="POST" style="display: inline;">
+                    <input type="hidden" name="coffeeId" value="${coffee.number}">
+                    <button type="submit" class="detail">詳細</button>
+                    </form>
+                    
+             </div>
+            </td>
+           </tr>
         </c:forEach>
+       </tbody>
+      </table>
 
     </c:otherwise>
 
 </c:choose>
 </c:if>
-</div>
 <!-- 改行は%0D%0A -->
 <a href="mailto:sekiguchi-tatsuhito-plusdojo2026@seplus2016.onmicrosoft.com?subject=お問い合わせ&body=ユーザー名：%0D%0Aメールアドレス：%0D%0Aお問い合わせ内容：" class="contactbutton">お問い合わせ</a>
 </body>
