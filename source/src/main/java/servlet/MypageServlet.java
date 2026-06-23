@@ -23,6 +23,13 @@ public class MypageServlet extends HttpServlet {
         HttpSession session = request.getSession();
         IdPw loginUser = (IdPw) session.getAttribute("id");
         
+        // ✅ ログイン中かどうかを確認
+        if (loginUser == null) {
+            // ゲストユーザーの場合、ログイン画面に遷移
+            response.sendRedirect(request.getContextPath() + "/LoginServlet");
+            return;
+        }
+        
         // ✅ リクエストスコープにも設定
         request.setAttribute("user", loginUser);
         

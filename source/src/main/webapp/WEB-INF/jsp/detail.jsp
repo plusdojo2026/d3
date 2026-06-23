@@ -6,378 +6,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/detail.css">
 <title>コーヒー詳細｜Brew List</title>
 
 <style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  .header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80px;
+    background-color: #e6e20a;
+    border-bottom: 3.5px solid #ffffff;
+    position: relative;
+    z-index: 10;
+  }
+
+  .header img:hover {
+    filter: brightness(1.3);
+    transform: scale(1.1);
+  }
+
+/*ログイン*/
+.login {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    padding: 8px 16px;
+    background: #9c6849;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s;
+}
+.login:hover {
+	background: #804040;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-body {
-	font-family: 'Arial', sans-serif;
-	background-color: #f5f5f5;
-}
-
-.title-area {
-	background-color: #fff;
-	padding: 15px;
-	text-align: center;
-	font-size: 24px;
-	font-weight: bold;
-	color: #333;
-}
-
-.header {
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	height: 80px;
-	background-color: #e6e20a;
-	border-bottom: 3.5px solid #ffffff;
-	position: relative;
-	z-index: 10;
-}
-
-.header img:hover {
-	filter: brightness(1.3);
-	transform: scale(1.1);
-	cursor: pointer;
-}
-
-.login-btn {
-	padding: 10px 20px;
-	background-color: #007bff;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 14px;
-	transition: background-color 0.3s;
-	position: absolute;
-	top: 15px;
-	right: 20px;
-}
-
-.login-btn:hover {
-	background-color: #0056b3;
-}
-
-.content {
-	max-width: 900px;
-	margin: 20px auto;
-	padding: 20px;
-}
-
-.detail-container {
-	background-color: white;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	overflow: hidden;
-}
-
-.detail-header {
-	display: flex;
-	gap: 30px;
-	padding: 30px;
-}
-
-.coffee-image {
-	flex-shrink: 0;
-}
-
-.coffee-image img {
-	width: 300px;
-	height: 300px;
-	object-fit: cover;
-	border-radius: 10px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.coffee-info {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.info-section {
-	margin-bottom: 20px;
-}
-
-.info-label {
-	font-size: 12px;
-	color: #999;
-	text-transform: uppercase;
-	margin-bottom: 5px;
-}
-
-.info-value {
-	font-size: 18px;
-	color: #333;
-	font-weight: bold;
-}
-
-.shopname {
-	font-size: 24px;
-	color: #333;
-	margin-bottom: 10px;
-}
-
-.coffeename {
-	font-size: 20px;
-	color: #666;
-}
-
-.price {
-	font-size: 32px;
-	color: #e6e20a;
-	font-weight: bold;
-	margin: 20px 0;
-}
-
-.button-group {
-	display: flex;
-	gap: 10px;
-	margin-top: 20px;
-}
-
-.btn {
-	flex: 1;
-	padding: 12px;
-	border: none;
-	border-radius: 5px;
-	font-size: 16px;
-	cursor: pointer;
-	transition: background-color 0.3s;
-}
-
-.btn-favorite {
-	background-color: #ff6b6b;
-	color: white;
-}
-
-.btn-favorite:hover {
-	background-color: #ff5252;
-}
-
-.btn-favorite.added {
-	background-color: #28a745;
-}
-
-.btn-favorite.added:hover {
-	background-color: #218838;
-}
-
-.btn-link {
-	background-color: #007bff;
-	color: white;
-	text-decoration: none;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.btn-link:hover {
-	background-color: #0056b3;
-}
-
-.detail-body {
-	padding: 30px;
-	border-top: 1px solid #eee;
-}
-
-.section {
-	margin-bottom: 30px;
-}
-
-.section-title {
-	font-size: 18px;
-	font-weight: bold;
-	color: #333;
-	margin-bottom: 15px;
-	border-bottom: 2px solid #e6e20a;
-	padding-bottom: 10px;
-}
-
-.section-content {
-	color: #666;
-	line-height: 1.8;
-}
-
-.memo-section {
-	margin-top: 20px;
-}
-
-.memo-label {
-	font-size: 14px;
-	font-weight: bold;
-	color: #333;
-	margin-bottom: 10px;
-}
-
-.memo-input {
-	width: 100%;
-	padding: 12px;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	font-size: 14px;
-	font-family: 'Arial', sans-serif;
-	resize: vertical;
-	min-height: 100px;
-}
-
-.memo-input:focus {
-	outline: none;
-	border-color: #e6e20a;
-	box-shadow: 0 0 5px rgba(230, 226, 10, 0.3);
-}
-
-.save-btn {
-	margin-top: 10px;
-	padding: 10px 20px;
-	background-color: #28a745;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 14px;
-}
-
-.save-btn:hover {
-	background-color: #218838;
-}
-
-.price-edit-section {
-	display: flex;
-	gap: 10px;
-	align-items: center;
-	margin-top: 15px;
-}
-
-.price-input {
-	width: 120px;
-	padding: 8px;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	font-size: 14px;
-}
-
-.edit-btn {
-	padding: 8px 16px;
-	background-color: #ffc107;
-	color: #333;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 14px;
-}
-
-.edit-btn:hover {
-	background-color: #ffb300;
-}
-
-.search-section {
-	margin-top: 15px;
-	display: flex;
-	gap: 10px;
-	align-items: center;
-}
-
-.search-input {
-	flex: 1;
-	padding: 8px 12px;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	font-size: 14px;
-}
-
-.search-btn {
-	padding: 8px 16px;
-	background-color: #17a2b8;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 14px;
-}
-
-.search-btn:hover {
-	background-color: #138496;
-}
-
-.search-results {
-	margin-top: 15px;
-	padding: 15px;
-	background-color: #f9f9f9;
-	border-radius: 5px;
-	border-left: 4px solid #17a2b8;
-}
-
-.result-item {
-	padding: 10px;
-	background-color: white;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	margin-bottom: 10px;
-}
-
-.result-item:last-child {
-	margin-bottom: 0;
-}
-
-.result-title {
-	font-weight: bold;
-	color: #333;
-	margin-bottom: 5px;
-}
-
-.result-desc {
-	font-size: 13px;
-	color: #666;
-}
-
-.no-results {
-	color: #999;
-	text-align: center;
-	padding: 20px;
-}
-
-.back-btn {
-	display: inline-block;
-	margin-top: 20px;
-	padding: 10px 20px;
-	background-color: #6c757d;
-	color: white;
-	text-decoration: none;
-	border-radius: 5px;
-	transition: background-color 0.3s;
-}
-
-.back-btn:hover {
-	background-color: #5a6268;
-}
-
-@media ( max-width : 768px) {
-	.detail-header {
-		flex-direction: column;
-		gap: 20px;
-	}
-	.coffee-image img {
-		width: 100%;
-		height: auto;
-	}
-	.button-group {
-		flex-direction: column;
-	}
-	.search-section {
-		flex-direction: column;
-	}
-	.detail-header, .detail-body {
-		padding: 15px;
-	}
-}
+  .tag {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
 </style>
 
 </head>
@@ -413,8 +87,9 @@ body {
 		</a>
 	</header>
 
-	<div class="content">
-		<div class="detail-container">
+<div class="content">
+  <h1 class="tag">詳細</h1>
+  
 			<div class="detail-header">
 				<div class="coffee-image">
 					<img
@@ -428,11 +103,12 @@ body {
 						<div class="coffeename">${coffee.name}</div>
 					</div>
 
-					<div>
-						<div class="info-section">
+					<div class="subinfo">
+					
+						<!-- <div class="info-section">
 							<div class="info-label">ブランド</div>
 							<div class="info-value">${coffee.bland}</div>
-						</div>
+						</div>-->
 
 						<div class="info-section">
 							<div class="info-label">サイズ</div>
@@ -444,18 +120,24 @@ body {
 							<div class="info-value">${coffee.area}</div>
 						</div>
 
-						<div class="price">¥${coffee.valu}</div>
+						<div class="price">¥${coffee.valu}
+						<!-- もし自分修正価格が記入されているなら、表示 -->
+						<c:if test="${not empty personalPrice}">
+							自分価格：¥${personalPrice}
+						</c:if>
+						
+						</div>
 
-						<div class="button-group">
-							<button class="btn btn-favorite"
+							<button class="btn-favorite"
 								onclick="toggleFavorite(${coffee.number})">
-								<span id="favoriteText">♡ お気に入りに追加</span>
+								<img src="images/favon.png" width="30">
 							</button>
-							<a href="${coffee.shop}" target="_blank" class="btn btn-link">公式サイト</a>
+							
+							<a href="${coffee.shop}" target="_blank">公式サイト</a>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
 			<div class="detail-body">
 				<div class="section">
@@ -470,14 +152,18 @@ body {
 					</div>
 				</div>
 
-				<div class="section">
+				<!-- <div class="section">
 					<div class="section-title">おすすめフード検索</div>
 					<div class="search-section">
 						<input type="text" id="foodKeyword" class="search-input"
 							placeholder="フード名を入力...">
 						<button class="search-btn" onclick="searchFood()">検索</button>
-					</div>
-					<div id="foodResults" class="search-results" style="display: none;">
+					</div>-->
+					
+					<div class="section">
+					<div class="section-title">おすすめフード</div>
+					
+					<div id="foodResults"  style="display: none;">
 						<div id="foodResultsList"></div>
 					</div>
 				</div>
@@ -530,10 +216,13 @@ body {
 
 				<a href="javascript:history.back()" class="back-btn">戻る</a>
 			</div>
-		</div>
-	</div>
 
 	<script>
+	//ロード時にお気に入りフード呼び出し
+	window.onload = function(){
+		  searchFood();
+	  };
+	
   // ✅ お気に入り追加/削除
   function toggleFavorite(coffeeId) {
     console.log('=== toggleFavorite 開始 ===');
@@ -748,7 +437,7 @@ body {
       if (data.success) {
         alert(data.message);
       } else {
-        alert(data.message || 'エラーが発生しました');
+        alert(data.message || 'ログインしてください');
       }
     })
     .catch(error => {
@@ -787,8 +476,9 @@ body {
       console.log('DEBUG: レスポンス =', data);
       if (data.success) {
         alert(data.message);
+        location.reload();　//表示するためにリロード
       } else {
-        alert(data.message || 'エラーが発生しました');
+        alert(data.message || 'ログインしてください');
       }
     })
     .catch(error => {

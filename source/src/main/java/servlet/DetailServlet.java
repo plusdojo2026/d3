@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CoffeeDAO;
+import dao.HistoryDAO;
+import dao.PersonalDAO;
 import dto.Coffee;
 import dto.IdPw;
-import dao.PersonalDAO;
 
 @WebServlet("/DetailServlet")
 public class DetailServlet extends HttpServlet {
@@ -37,6 +38,9 @@ public class DetailServlet extends HttpServlet {
 		// ✅ セッションからログインユーザーを取得
 		HttpSession session = request.getSession();
 		IdPw loginUser = (IdPw) session.getAttribute("id");
+		
+		//未ログイン時
+		if(loginUser == null) {
 
 		// ✅ 履歴管理：DetailServletの機能を統合
 		List<Integer> historyList = (List<Integer>) session.getAttribute("historyList");
@@ -58,6 +62,19 @@ public class DetailServlet extends HttpServlet {
 		// コンソールに表示
 		System.out.printf("coffeeNumber:%d%n", coffeeId);
 
+		}else {
+			//ログイン済み
+			
+			HistoryDAO hDao = new HistoryDAO();
+			
+			//重複削除
+			hDao.delete(loginUser.getId(), coffeeId);
+			
+			//DBに登録
+			hDao.insert(loginUser.getId(), coffeeId);
+			
+		}
+		
 		// ✅ DAO でコーヒー情報を取得
 		CoffeeDAO dao = new CoffeeDAO();
 		Coffee coffee = dao.getCoffeeById(coffeeId);
@@ -76,13 +93,17 @@ public class DetailServlet extends HttpServlet {
 		// ✅ PersonalDAO で保存されたメモを取得
 		PersonalDAO pDao = new PersonalDAO();
 		String savedMemo = ""; // 初期値は空
+		Integer personalPrice = null;
 
 		if (loginUser != null) {
 		    // ログインしている場合、ユーザーIDとコーヒーIDの両方を渡す
 		    savedMemo = pDao.getMemo(loginUser.getId(), coffeeId); 
+		    personalPrice = pDao.getPrice(loginUser.getId(), coffeeId);
 		}
 
 		request.setAttribute("savedMemo", savedMemo); // メモをJSPに渡す
+		request.setAttribute("personalPrice", personalPrice);//自分価格修正をJSPに渡す。
+		
 		// --- 修正ここまで ---
 
 		// --- ここまで追加 ---

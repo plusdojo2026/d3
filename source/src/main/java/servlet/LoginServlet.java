@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.HistoryDAO;
 import dao.IdPwDAO;
 import dto.IdPw;
 
@@ -48,6 +49,26 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			IdPw user = UserList.get(0); // ← 安全になった
 			session.setAttribute("id", user);
+			
+			//セッションの履歴取得
+			List<Integer> historyList = 
+					(List<Integer>)session.getAttribute("historyList");
+			
+			//DBへ保存移行
+			if(historyList != null) {
+				
+				HistoryDAO dao = new HistoryDAO();
+				
+				for(Integer coffeeNumber : historyList) {
+					dao.delete( user.getId(),coffeeNumber);
+					dao.insert( user.getId(),coffeeNumber);
+				}
+				
+				//いらないセッションを削除
+				session.removeAttribute("historyList");
+				
+			}
+			
 			//response.sendRedirect("/d3/Home.jsp");
 			response.sendRedirect("/d3/HomeServlet");
 		}

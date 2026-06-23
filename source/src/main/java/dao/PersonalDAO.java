@@ -116,4 +116,26 @@ public class PersonalDAO {
             return false;
         }
     }
+    
+    //自分修正価格を取得
+    
+    public Integer getPrice(int userId, int coffeeId) {
+        String sql = "SELECT new_valu FROM personal WHERE personaluserid = ? AND personalcoffeeid = ?";
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
+             PreparedStatement pStmt = conn.prepareStatement(sql)) {
+            
+            pStmt.setInt(1, userId);
+            pStmt.setInt(2, coffeeId);
+            ResultSet rs = pStmt.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt("new_valu");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // データがない場合はnullを返す
+    }
+    
+    
 }

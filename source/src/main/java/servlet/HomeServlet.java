@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CoffeeDAO;
+import dao.HistoryDAO;
 import dto.Coffee;
 import dto.IdPw;
 
@@ -99,12 +100,23 @@ import dto.IdPw;
 	        }
 	        //切り替え処理 履歴
 		}else if ("history".equals(mode)) {
+			
+			//未ログイン時
+			if(loginUser == null) {
+				
 			List<Integer>historyList = 
 					(List<Integer>) session.getAttribute("historyList");
 			
 			System.out.println(historyList);
 			coffeeList = dao.findByIds(historyList);
 			
+			}else {
+				//ログイン時
+				HistoryDAO hDao = new HistoryDAO();
+
+					coffeeList = hDao.findHistoryCoffee(
+							loginUser.getId());
+			}
 		}
 	        request.setAttribute("coffeeList", coffeeList);
 	        request.setAttribute("id", loginUser);
