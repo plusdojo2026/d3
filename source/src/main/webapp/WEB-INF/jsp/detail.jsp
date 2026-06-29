@@ -39,11 +39,9 @@
     font-weight: bold;
     cursor: pointer;
     z-index: 100;
-    transition: all 0.3s;
 }
 .login:hover {
-	background: #804040;
-	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background: #804040;
 }
 
   .tag {
@@ -52,6 +50,13 @@
     margin-bottom: 20px;
     color: #333;
   }
+  
+/*自分修正価格*/
+.changeprice {
+	font-size: 16px;
+	color: #999;
+	margin: 0px 0;
+}
 </style>
 
 </head>
@@ -64,12 +69,12 @@
 		<c:when test="${not empty loginUser}">
 			<form action="${pageContext.request.contextPath}/logout.jsp"
 				method="POST" style="display: inline;">
-				<button type="submit" class="login-btn">ログアウト</button>
+				<button type="submit" class="login">ログアウト</button>
 			</form>
 		</c:when>
 		<c:otherwise>
 			<a href="${pageContext.request.contextPath}/LoginServlet">
-				<button type="submit" class="login-btn">ログイン</button>
+				<button type="submit" class="login">ログイン</button>
 			</a>
 		</c:otherwise>
 	</c:choose>
@@ -122,9 +127,14 @@
 
 						<div class="price">¥${coffee.valu}
 						<!-- もし自分修正価格が記入されているなら、表示 -->
+						
+						<div class="changeprice">
+						
 						<c:if test="${not empty personalPrice}">
 							自分価格：¥${personalPrice}
 						</c:if>
+						
+						</div>
 						
 						</div>
 
@@ -132,8 +142,9 @@
 								onclick="toggleFavorite(${coffee.number})">
 								<img src="images/favon.png" width="30">
 							</button>
-							
-							<a href="${coffee.shop}" target="_blank">公式サイト</a>
+							<!-- 
+							<a href="${coffee.shop}" target="_blank" class="linkdesu">公式サイト</a>
+							 -->
 							</div>
 						</div>
 					</div>
@@ -180,6 +191,7 @@
 					</div>
 				</div>
 
+				<!-- 
 				<div class="section">
 					<div class="section-title">地域または駅名検索</div>
 					<div class="search-section">
@@ -190,7 +202,7 @@
 					<div id="areaResults" class="search-results" style="display: none;">
 						<div id="areaResultsList"></div>
 					</div>
-				</div>
+				</div> -->
 
 				<%-- --- detail.jsp の自分メモ セクション --- --%>
 				<%-- detail.jsp の自分メモ部分 --%>
@@ -259,8 +271,12 @@
         alert(data.message);
         const btn = document.querySelector('.btn-favorite');
         const text = document.getElementById('favoriteText');
+        //修正
+         if (text) {
+      text.textContent = '♥ お気に入りに追加済み';
+    }
         btn.classList.add('added');
-        text.textContent = '♥ お気に入りに追加済み';
+       
       } else {
         alert('❌ ' + (data.message || 'エラーが発生しました'));
       }
@@ -352,8 +368,8 @@
     } else {
       resultsList.innerHTML = data.map(item => 
         '<div class="result-item">' +
-        '<div class="result-title">' + (item.shopname || '名前なし') + '</div>' +
-        '<div class="result-desc">地域: ' + (item.area || '不明') + ' | 価格: ¥' + (item.valu || '不明') + '</div>' +
+        '<div class="result-title">' + (item.shop || '名前なし') + '</div>' +
+        '<div class="result-desc">価格: ¥' + (item.valu || '不明') + '</div>' +
         '</div>'
       ).join('');
     }
@@ -361,7 +377,7 @@
     resultsDiv.style.display = 'block';
   }
 
-  // ✅ 地域または駅名検索
+  /* ✅ 地域または駅名検索
   function searchArea() {
     const keyword = document.getElementById('areaKeyword').value.trim();
     
@@ -404,18 +420,27 @@
     }
     
     resultsDiv.style.display = 'block';
-  }
+  }*/
 
   // ✅ メモを保存
   function saveMemo() {
     const memo = document.getElementById('memoText').value;
     const coffeeId = '${coffee.number}';
+    //文字数チェック
+    const MAX_LENGTH = 200;
     
     console.log('DEBUG: coffeeId =', coffeeId);
     console.log('DEBUG: memo =', memo);
+    console.log('MAX_LENGTH=', MAX_LENGTH);
     
     if (coffeeId === '' || coffeeId === 'undefined') {
       alert('コーヒーIDが取得できません');
+      return;
+    }
+    
+ 	//文字数チェック
+    if (memo.length > MAX_LENGTH) {
+      alert('メモは' + MAX_LENGTH + '文字以内で入力してください');
       return;
     }
     
@@ -444,6 +469,8 @@
       console.error('Error:', error);
       alert('メモの保存に失敗しました');
     });
+    
+    
   }
 
   // ✅ 価格を更新

@@ -15,7 +15,7 @@
   
   body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #E6E20A;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,7 +26,7 @@
   .result-container {
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    
     padding: 40px;
     max-width: 500px;
     text-align: center;
@@ -38,7 +38,7 @@
   }
   
   .success .result-icon {
-    color: #28a745;
+    color: #9C6849;
   }
   
   .error .result-icon {
@@ -51,7 +51,7 @@
   }
   
   .success h1 {
-    color: #28a745;
+    color: #9C6849;
   }
   
   .error h1 {
@@ -83,17 +83,15 @@
   }
   
   .btn-primary {
-    background-color: #007bff;
+    background-color: #804040;
     color: white;
   }
   
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
+ 
   
   .btn-secondary {
-    background-color: #6c757d;
-    color: white;
+    background-color: #804040;
+    color: #804040;
   }
   
   .btn-secondary:hover {

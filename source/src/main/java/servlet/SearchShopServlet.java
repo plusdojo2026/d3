@@ -42,6 +42,8 @@ public class SearchShopServlet extends HttpServlet {
         for (Coffee coffee : shops) {
             JSONObject obj = new JSONObject();
             obj.put("coffeenumber", coffee.getNumber());
+            //追加
+            obj.put("shop", coffee.getShop());
             obj.put("shopname", coffee.getShopname());
             obj.put("area", coffee.getArea());
             obj.put("name", coffee.getName());

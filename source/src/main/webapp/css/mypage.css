@@ -34,10 +34,10 @@ body {
 
 
 /*リンク部分*/
-a {
+.linkdesu {
 	color: #e6e20a;
 }
-a:hover {
+.linkdesu:hover {
 	color: #f1f543;
 }
 

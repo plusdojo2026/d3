@@ -66,11 +66,14 @@
     font-weight: bold;
     cursor: pointer;
     z-index: 100;
-    transition: all 0.3s;
+    
 }
 .login:hover {
 	background: #804040;
-	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+ a:-webkit-any-link {
+	text-decoration: none;
 }
   
 </style>
@@ -93,7 +96,7 @@
 <header class="header">
   <a href="HomeServlet"><img src="images/ikon.png" width="35"></a>
   <a href="FavoriteServlet"><img src="images/fav.png" width="50"></a>
-  <a href="MypageServlet"><img src="images/mypage.png" width="50"></a>
+  <a href="MypageServlet"><img src="images/mypageon.png" width="50"></a>
 </header>
 
 <div class="content">

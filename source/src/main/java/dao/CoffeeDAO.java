@@ -13,8 +13,8 @@ import dto.Coffee;
 public class CoffeeDAO {
     
     private static final String URL = "jdbc:mysql://localhost:3306/d3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true";
-    private static final String USER = "root";
-    private static final String PASS = "password"; // ⚠️ 自分のパスワードに変更
+    private static final String USER = "d3";
+    private static final String PASS = "TxVcPESbNwHfpVsY"; // ⚠️ 自分のパスワードに変更
     
     static {
         try {
@@ -67,7 +67,7 @@ public class CoffeeDAO {
     public List<Coffee> searchShopByKeyword(String keyword) {
         List<Coffee> coffees = new ArrayList<>();
         String sql = "SELECT coffeenumber, name, valu, size, bland, area, shop, shopname, level, picture " +
-                     "FROM coffee WHERE shopname LIKE ? LIMIT 20";
+                     "FROM coffee WHERE shop LIKE ? LIMIT 20";
         
         try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
              PreparedStatement pStmt = conn.prepareStatement(sql)) {
@@ -185,7 +185,7 @@ public class CoffeeDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/d3?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"d3", "TxVcPESbNwHfpVsY");
 
 			// SQL文を準備する (ベース)
 			String sql = "SELECT coffeenumber, name, valu,  size, bland, area, shop, shopname, level,  picture " +"FROM coffee WHERE 1=1 ";
@@ -305,7 +305,7 @@ public class CoffeeDAO {
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/d3?"
 						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-						"root", "password");
+						"d3", "TxVcPESbNwHfpVsY");
 
 				// SQL文を準備する (ベース)
 				String sql = "SELECT coffeenumber, name, valu, size, bland, area, shop, shopname, level, picture "
@@ -368,7 +368,7 @@ public class CoffeeDAO {
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/d3?"
 						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-						"root", "password");
+						"d3", "TxVcPESbNwHfpVsY");
 
 				// SQL文を準備する (ベース)
 				String sql = "SELECT coffeenumber, name, valu, size, bland, area, shop, shopname, level, picture "
@@ -438,7 +438,7 @@ public class CoffeeDAO {
 		        // データベースに接続する
 		        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/d3?"
 		                + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-		                "root", "password");
+		                "d3", "TxVcPESbNwHfpVsY");
 		    
 		        String sql = "SELECT coffeenumber, name, valu, size, bland, area, shop, shopname, level, picture "
 		                    + "FROM coffee WHERE coffeenumber IN (";

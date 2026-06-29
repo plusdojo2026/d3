@@ -22,7 +22,7 @@ public class HistoryDAO {
 						// データベースに接続する
 						conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/d3?"
 								+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-								"root", "password");
+								"d3", "TxVcPESbNwHfpVsY");
 
 						// SQL文を準備する (ベース)
 						String sql = "INSERT INTO history "
@@ -56,7 +56,7 @@ public class HistoryDAO {
 						// データベースに接続する
 						conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/d3?"
 								+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-								"root", "password");
+								"d3", "TxVcPESbNwHfpVsY");
 
 						// SQL文を準備する (ベース)
 						String sql = "DELETE FROM history "
@@ -96,7 +96,7 @@ public class HistoryDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/d3?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"d3", "TxVcPESbNwHfpVsY");
 
 			// SQL文を準備する (ベース)
 			String sql = "SELECT c.* "

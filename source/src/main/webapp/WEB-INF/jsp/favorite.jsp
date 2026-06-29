@@ -39,13 +39,10 @@
     font-weight: bold;
     cursor: pointer;
     z-index: 100;
-    transition: all 0.3s;
 }
 .login:hover {
 	background: #804040;
-	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-
 
   .tag {
     font-size: 28px;
@@ -54,7 +51,10 @@
     color: #333;
   }
 
-
+a:-webkit-any-link {
+	text-decoration: none;
+}
+  
 </style>
 
 </head>
@@ -66,11 +66,11 @@
   <!-- <a href="/d3/logout.jsp" class="login">ログアウト</a> 
   <a href="/d3/LoginServlet" class="login">ログイン</a>-->
   <c:if test="${empty sessionScope.id}">
-  	<a href="/d3/LoginServlet" class="login">ログイン</a>
+  	<div class="login"> <a href="/d3/LoginServlet">ログイン</a> </div>
   </c:if>
   
   <c:if test="${not empty sessionScope.id}">
-  	<a href="/d3/logout.jsp" class="login">ログアウト</a>
+  	<div class="login"> <a href="/d3/logout.jsp" class="login">ログアウト</a> </div>
   </c:if>
   
   

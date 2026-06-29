@@ -69,6 +69,12 @@ import dto.IdPw;
 	        //切り替え処理用
 	        String mode =
 	            request.getParameter("mode");
+	        
+	        if (mode == null) {
+	        	mode = "recommend";
+	        }
+	        
+	        request.setAttribute("mode",mode);
 
 	        //値を受け取る
 	        String keyword =

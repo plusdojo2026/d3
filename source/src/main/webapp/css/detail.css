@@ -5,6 +5,23 @@ body {
     margin: 0;
 }
 
+/*ログイン*/
+.login {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    padding: 8px 16px;
+    background: #9c6849;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    z-index: 100;
+}
+.login:hover {
+	background: #804040;
+}
+
 /* タイトル部分 */
 .title-area {
     background-color: white;
@@ -23,12 +40,15 @@ body {
 	padding-bottom: 10px;
 }
 
-a {
+.linkdesu {
 	color: #e6e20a;
+	font-size: 14px;
 }
-a:hover {
+.linkdesu:hover {
 	color: #f1f543;
 }
+
+
 /*詳細画面*/
 .detail-content {
 	display: flax;
@@ -188,7 +208,7 @@ a:hover {
 .save-btn {
 	margin-top: 10px;
 	padding: 10px 20px;
-	background-color: #ffff00;
+	background-color: #e6e20a;
 	color: white;
 	border: none;
 	border-radius: 5px;
@@ -197,7 +217,7 @@ a:hover {
 }
 
 .save-btn:hover {
-	background-color: #218838;
+	background-color:  #f1f543;
 }
 
 .price-edit-section {
@@ -215,10 +235,17 @@ a:hover {
 	font-size: 14px;
 }
 
+/*追加*/
+.changeprice {
+	font-size: 16px;
+	color: #9c6849;
+	margin: 0px 0;
+}
+
 .edit-btn {
 	padding: 8px 16px;
-	background-color: #c0c0c0;
-	color: #333;
+	background-color: #e6e20a;
+	color: white;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
@@ -226,7 +253,7 @@ a:hover {
 }
 
 .edit-btn:hover {
-	background-color: #c0c0c0;
+	background-color: #f1f543;
 }
 
 .search-section {
@@ -259,20 +286,12 @@ a:hover {
 	background-color: #808080;
 }
 
-.search-results {
-	margin-top: 15px;
-	padding: 15px;
-	background-color: #f9f9f9;
-	border-radius: 5px;
-	border-left: 4px solid #e6e20a;
-}
-
 .result-item {
 	padding: 10px;
 	background-color: white;
 	border: 1px solid #ddd;
 	border-radius: 5px;
-	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 .result-item:last-child {

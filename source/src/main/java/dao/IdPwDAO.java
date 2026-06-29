@@ -24,7 +24,7 @@ public class IdPwDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/d3?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+					"d3", "TxVcPESbNwHfpVsY");
 
 			// SELECT文を準備する
 			String sql = "SELECT * FROM idpw WHERE email=? AND password=?";//*ではなく、指定して取り出す。
@@ -86,10 +86,10 @@ public class IdPwDAO {
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/d3?"
 						+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-						"root", "password");
+						"d3", "TxVcPESbNwHfpVsY");
 
 				// SQL文を準備する
-				String sql = "INSERT INTO IdPw VALUES (0, ?, ?, ?, ?)";
+				String sql = "INSERT INTO idpw VALUES (0, ?, ?, ?, ?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -145,8 +145,8 @@ public class IdPwDAO {
 
 		        conn = DriverManager.getConnection(
 		            "jdbc:mysql://localhost:3306/d3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
-		            "root",
-		            "password"
+		            "d3",
+		            "TxVcPESbNwHfpVsY"
 		        );
 
 		        // SQL 文の修正：WHERE の前の余分な , を削除

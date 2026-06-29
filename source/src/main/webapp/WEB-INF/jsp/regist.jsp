@@ -74,7 +74,7 @@
 	
 	<div class ="form-group">
 		<label for ="user">ユーザー名<span style="color: #dc3545;">*</span></label><br>
-	    <input type="text" id="user" name="username" placeholder="ユーザー名を入力してください" class="form">
+	    <input type="text" id="user" name="user" placeholder="ユーザー名を入力してください" class="form">
 	    <div class ="error-message" id="userError">ユーザーネームを入力してください</div>
     </div>
     
@@ -87,7 +87,7 @@
 	<div class ="form-group">
 	<label for ="password">パスワード<span style="color: #dc3545;">*</span></label><br>
     <input type="password" id="password" name="password" placeholder="パスワードを入力してください"class="form">
-	<div class ="error-message" id="passwordError">パスワードを入力してください（6文字以上）</div>
+	<div class ="error-message" id="passwordError">パスワードを入力してください</div>
     </div>
     
 <input type="submit" value="登録" class="button">
@@ -124,6 +124,11 @@
       userInput.classList.add('error');
       userError.classList.add('show');
       isValid = false;
+    } else if (userInput.value.length < 1 || userInput.value.length > 20) {
+    	userInput.classList.add('error');
+    	userError.textContent = 'ユーザー名は1~20文字で入力してください';
+    	userError.classList.add('show');
+        isValid = false;
     } else {
       userInput.classList.remove('error');
       userError.classList.remove('show');
@@ -136,6 +141,11 @@
       emailError.textContent = 'メールアドレスを入力してください';
       emailError.classList.add('show');
       isValid = false;
+    } else if (emailInput.value.length < 8 || emailInput.value.length > 50) {
+    	emailInput.classList.add('error');
+    	emailError.textContent = 'メールアドレスは8~50文字でで入力してください';
+    	emailError.classList.add('show');
+        isValid = false;
     } else if (!emailRegex.test(emailInput.value.trim())) {
       emailInput.classList.add('error');
       emailError.textContent = '有効なメールアドレスを入力してください';
@@ -151,9 +161,9 @@
       passwordInput.classList.add('error');
       passwordError.classList.add('show');
       isValid = false;
-    } else if (passwordInput.value.length < 6) {
+    } else if (passwordInput.value.length < 8 || passwordInput.value.length > 20) {
       passwordInput.classList.add('error');
-      passwordError.textContent = 'パスワードは6文字以上で入力してください';
+      passwordError.textContent = 'パスワードは8~20文字で入力してください';
       passwordError.classList.add('show');
       isValid = false;
     } else {
@@ -175,7 +185,7 @@
 
   // リアルタイムバリデーション
   userInput.addEventListener('blur', function() {
-    if (this.value.trim() !== '') {
+    if (this.value.trim() !== ''&&this.value.length >= 1 && this.value.length <= 20) {
       this.classList.remove('error');
       userError.classList.remove('show');
     }
@@ -183,14 +193,14 @@
 
   emailInput.addEventListener('blur', function() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (this.value.trim() !== '' && emailRegex.test(this.value.trim())) {
+    if (this.value.trim() !== '' && emailRegex.test(this.value.trim())&&this.value.length >= 8 && this.value.length <= 50) {
       this.classList.remove('error');
       emailError.classList.remove('show');
     }
   });
 
   passwordInput.addEventListener('blur', function() {
-    if (this.value.length >= 6) {
+    if (this.value.length >= 8 && this.value.length <= 20) {
       this.classList.remove('error');
       passwordError.classList.remove('show');
     }

@@ -14,8 +14,8 @@ public class FoodDAO {
     
     // DB接続情報（定数化）
     private static final String URL = "jdbc:mysql://localhost:3306/d3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true";
-    private static final String USER = "root";
-    private static final String PASS = "password"; // ⚠️ 自分のパスワードに変更
+    private static final String USER = "d3";
+    private static final String PASS = "TxVcPESbNwHfpVsY"; // ⚠️ 自分のパスワードに変更
     
     // ✅ ドライバー読み込みは1回だけ
     static {

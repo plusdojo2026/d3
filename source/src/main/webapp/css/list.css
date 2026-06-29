@@ -33,31 +33,11 @@ body {
 	margin: 0;
 }
 
-/*ログイン*/
-.login {
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    padding: 8px 16px;
-    background: #9c6849;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 100;
-    transition: all 0.3s;
-}
-.login:hover {
-	background: #804040;
-	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
 /*リンク部分*/
-a {
+.linkdesu {
 	color: #e6e20a;
 }
-a:hover {
+.linkdesu:hover {
 	color: #f1f543;
 }
 
@@ -107,8 +87,7 @@ a:hover {
 	display: inline-block;
     width: 30%;
     padding: 15px;
-    background: #e6e20a;
-    color: #5b5b5b;
+    background:  #c0c0c0;
     border-radius: 8px;
     border: none;
     font-size: 16px;
@@ -117,6 +96,10 @@ a:hover {
     margin-top: -200px;
     text-align: center;
 }
+.bar.active {
+	background-color:  #e6e20a;
+}
+
 #recommend {
     position: relative;
     display: inline-block;
@@ -191,7 +174,24 @@ a:hover {
     color: #e6e20a;
     margin-top: 5px;
   }
+  
+  select {
+  	width: 20%;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 2px solid #e6e20a;
+  }
 
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .selectgroup {
+  	text-align: center;
+  }
+  
   .detail {
     display: inline-block;
     margin: 10px 30px 30px 30px;
@@ -233,3 +233,11 @@ a:hover {
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       object-fit: cover;
     }
+
+    /*問い合わせ*/
+ .contactbutton {
+	color: #e6e20a;
+}
+.contactbutton:hover {
+	color: #f1f543;
+}

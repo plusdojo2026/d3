@@ -24,8 +24,8 @@ public class FavoriteDAO {
             // データベースに接続
             conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/d3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-                "root",
-                "password"
+                "d3",
+                "TxVcPESbNwHfpVsY"
             );
             
             // ✅ 3つのテーブルを JOIN して取得
@@ -92,8 +92,8 @@ public class FavoriteDAO {
             
             conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/d3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-                "root",
-                "password"
+                "d3",
+                "TxVcPESbNwHfpVsY"
             );
             
             String sql = "INSERT INTO likecoffee (usernumber, coffeenumber) VALUES (?, ?)";
@@ -134,8 +134,8 @@ public class FavoriteDAO {
             
             conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/d3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-                "root",
-                "password"
+                "d3",
+                "TxVcPESbNwHfpVsY"
             );
             
             String sql = "DELETE FROM likecoffee WHERE usernumber = ? AND coffeenumber = ?";

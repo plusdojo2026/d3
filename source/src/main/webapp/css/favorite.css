@@ -22,24 +22,10 @@ body {
 	padding-bottom: 10px;
 }
 
-/*ログイン*/
-.login {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    padding: 5px;
-    background: #9c6849;
-    color: white;
-    border: none;
-    border-radius: 12px;
-}
-.login:hover {
-	background: #804040;
-}
-a {
+.linkdesu {
 	color: #e6e20a;
 }
-a:hover {
+.linkdesu:hover {
 	color: #f1f543;
 }
 
